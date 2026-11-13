@@ -18,6 +18,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.example.lab13_animaciones.ui.screens.Ejercicio1Screen
 import com.example.lab13_animaciones.ui.screens.Ejercicio2Screen
+import com.example.lab13_animaciones.ui.screens.Ejercicio3Screen
 import com.example.lab13_animaciones.ui.theme.Lab13_AnimacionesTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Lab13_AnimacionesTheme {
-                var selectedTab by remember { mutableIntStateOf(1) }
+                var selectedTab by remember { mutableIntStateOf(2) }
 
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
@@ -44,6 +45,12 @@ class MainActivity : ComponentActivity() {
                                 label = { Text("Ejercicio 2") },
                                 icon = { Text("🎨") }
                             )
+                            NavigationBarItem(
+                                selected = selectedTab == 2,
+                                onClick = { selectedTab = 2 },
+                                label = { Text("Ejercicio 3") },
+                                icon = { Text("📐") }
+                            )
                         }
                     }
                 ) { innerPadding ->
@@ -51,6 +58,7 @@ class MainActivity : ComponentActivity() {
                         when (selectedTab) {
                             0 -> Ejercicio1Screen()
                             1 -> Ejercicio2Screen()
+                            2 -> Ejercicio3Screen()
                         }
                     }
                 }
