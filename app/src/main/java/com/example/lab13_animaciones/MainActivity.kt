@@ -20,6 +20,7 @@ import com.example.lab13_animaciones.ui.screens.Ejercicio1Screen
 import com.example.lab13_animaciones.ui.screens.Ejercicio2Screen
 import com.example.lab13_animaciones.ui.screens.Ejercicio3Screen
 import com.example.lab13_animaciones.ui.screens.Ejercicio4Screen
+import com.example.lab13_animaciones.ui.screens.WhackAlienScreen
 import com.example.lab13_animaciones.ui.theme.Lab13_AnimacionesTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,7 +29,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Lab13_AnimacionesTheme {
-                var selectedTab by remember { mutableIntStateOf(3) }
+                var selectedTab by remember { mutableIntStateOf(4) }
 
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
@@ -58,6 +59,12 @@ class MainActivity : ComponentActivity() {
                                 label = { Text("Ejercicio 4") },
                                 icon = { Text("🔄") }
                             )
+                            NavigationBarItem(
+                                selected = selectedTab == 4,
+                                onClick = { selectedTab = 4 },
+                                label = { Text("Alien") },
+                                icon = { Text("👾") }
+                            )
                         }
                     }
                 ) { innerPadding ->
@@ -67,6 +74,7 @@ class MainActivity : ComponentActivity() {
                             1 -> Ejercicio2Screen()
                             2 -> Ejercicio3Screen()
                             3 -> Ejercicio4Screen()
+                            4 -> WhackAlienScreen()
                         }
                     }
                 }
